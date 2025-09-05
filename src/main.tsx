@@ -3,11 +3,10 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { ConfigProvider } from "antd";
 import App from "./App.tsx";
-import { getAntdTheme } from "./theme.ts";
-import { store } from "./store";
-import { useAppSelector } from "./store/hooks";
-import { selectEffectiveTheme } from "./store/themeSlice";
-import ThemeEffects from "./components/ThemeEffects";
+import { getAntdTheme } from "./shared/lib/theme.ts";
+import { store, useAppSelector } from "./app/providers";
+import { selectEffectiveTheme } from "./entities/theme";
+import { ThemeEffects } from "./features/theme-switcher";
 import "antd/dist/reset.css";
 import "./index.css";
 
@@ -22,7 +21,11 @@ export const ThemedApp = () => {
   );
 };
 
-createRoot(document.getElementById("root")!).render(
+// App entry point
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error("Root element not found");
+
+createRoot(rootElement).render(
   <StrictMode>
     <Provider store={store}>
       <ThemedApp />

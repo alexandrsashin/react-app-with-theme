@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "./index";
+import type { RootState } from "../../../app/providers";
 
 export type Theme = "light" | "dark" | "system";
 
@@ -56,4 +56,4 @@ export const selectEffectiveTheme = (state: RootState): "light" | "dark" => {
     : selectedTheme;
 };
 
-export default themeSlice.reducer;
+export const themeReducer = themeSlice.reducer;

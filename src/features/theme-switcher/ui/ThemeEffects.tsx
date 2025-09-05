@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { selectEffectiveTheme, setSystemIsDark } from "../store/themeSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/providers";
+import { selectEffectiveTheme, setSystemIsDark } from "../../../entities/theme";
 
 /**
  * A component for tracking the system theme and setting the theme attribute in the DOM.
  * Does not render any UI, only handles side effects.
  */
-const ThemeEffects = () => {
+export const ThemeEffects = () => {
   const dispatch = useAppDispatch();
   const effectiveTheme = useAppSelector(selectEffectiveTheme);
 
@@ -31,5 +31,3 @@ const ThemeEffects = () => {
 
   return null;
 };
-
-export default ThemeEffects;
